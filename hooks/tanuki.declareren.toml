@@ -1,8 +1,0 @@
-name = "tanuki.declareren"
-form_name = ""
-sheet_id = ""
-
-
-[mapping]
-A = "veld1"
-B = "veld2"
