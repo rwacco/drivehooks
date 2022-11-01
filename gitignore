@@ -1,0 +1,4 @@
+hooks/*
+!hooks/_template.toml
+
+credentials.json
