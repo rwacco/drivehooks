@@ -10,6 +10,16 @@ class Hook():
         self.sheet_id = config['sheet_id']
         self.mapping = config['mapping']
 
+    @staticmethod
+    def new_hook(form_data):
+        pass
+    
+    def save(self):
+        pass
+
+    def new_entry(self, form_data):
+        pass
+
 
 def load_hooks(path="hooks/"):
     hooks = {}
@@ -27,7 +37,10 @@ app = Quart(__name__)
 @app.route('/')
 async def root():
     form_data = dict(request.form)
-    hook = hooks[form_data["Form name"]]
+    hook = hooks.get(form_data["Form name"])
+
+    if not hook:
+        pass
 
 
 app.run(host="0.0.0.0", port=8030)
