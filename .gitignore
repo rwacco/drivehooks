@@ -2,3 +2,7 @@ hooks/*
 !hooks/_template.toml
 
 credentials.json
+
+config.toml
+
+__pycache__/
