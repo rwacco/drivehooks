@@ -1,4 +1,4 @@
-import toml
+import tomllib
 import os
 from os.path import isfile, join
 from quart import Quart, request
@@ -15,7 +15,7 @@ def load_hooks(path="hooks/"):
     hooks = {}
     hook_files = [f"{path + f}" for f in os.listdir(path) if isfile(join(path, f)) and f[0] != '_']
     for f_path in hook_files:
-        hook = Hook(toml.load(f_path))
+        hook = Hook(tomllib.load(f_path))
         hooks[hook.form_name] = hook
 
 
@@ -26,7 +26,10 @@ app = Quart(__name__)
 
 @app.route('/')
 async def root():
-    pass
+    form_data = dict(request.form)
+    hook = hooks[form_data["Form name"]]
 
 
-app.run(host="127.0.0.1", port=8030)
+app.run(host="0.0.0.0", port=8030)
+    
+    
